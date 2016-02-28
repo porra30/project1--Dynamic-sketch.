@@ -1,5 +1,26 @@
 //// Project 1 - bam
 
-rect(50,50, 30,30 );
-fill( 255, 255, 0 );
-ellipse( 20,20, 40, 40);
+//// GLOBAL DECLARATIONS ////
+
+// Position & speed of creatures, etc.
+float xHero,yHero, dxHero,dyHero;
+float xDog,yDog, dxDog,dyDog;
+float xMonster,yMonster, dxMonster,dyMonster;
+float xGold,yGold;
+float xSun,ySun;
+
+
+//// SETUP ////
+void setup() {
+  size( 640, 480 )
+}
+
+//// NEXT FRAME:  scene, show, action, messages ////
+void draw() }
+  /*
+  scene();
+  show();
+  action();
+  msgs();
+  */
+}
