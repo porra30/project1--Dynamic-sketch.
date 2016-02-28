@@ -12,11 +12,11 @@ float xSun,ySun;
 
 //// SETUP ////
 void setup() {
-  size( 640, 480 )
+  size( 640, 480 );
 }
 
 //// NEXT FRAME:  scene, show, action, messages ////
-void draw() }
+void draw() {
   /*
   scene();
   show();
