@@ -1,17 +1,19 @@
 //// Project 1 - Dynamic sketch.
+////   Hero chases gold, monster chases hero.
 
 String title="Project #1 -- Zoog chases the gold, while Darth chases Zoog";
 String author="Bruce Alan Martin; 2016/2/29";
 
 //// GLOBAL DECLARATIONS ////
 float horizon;
+int score=0;
 
 // Position & speed of creatures, etc.
 float xDarth,yDarth, dxDarth,dyDarth;
 float xZoog,yZoog, dxZoog,dyZoog;
 float xDog,yDog, dxDog,dyDog;
 float xGold,yGold;
-float xSun,ySun;
+float xSun=50,ySun=50;
 
 
 //// SETUP ////
@@ -31,6 +33,8 @@ void draw() {
 //// SCENE:  sky, sun, tree, house. ////
 void scene() {
   background( 200,200,255 );    // blue sky
+  fill( 255,255,0 );            // yellow sun.
+  ellipse( xSun,ySun, 30,30 );
   fill( 150,250,150 );          // green grass
   rect( 0,horizon, width, height*3/4 );
   // ++++ ADD CODE HERE +++
@@ -51,6 +55,9 @@ void credits() {
   fill(0);
   text( title, width/3, 20 );
   text( author, 10, height-10 );
+  if (score>0) {
+    text( score, width*3/4, 40 );    // Score (if any)
+  }
   // ++++ ADD CODE HERE +++
 }
 
