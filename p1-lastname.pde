@@ -33,7 +33,7 @@ void draw() {
 
 //// SCENE:  sky, sun, tree, house. ////
 void scene() {
-  background( 200, 200, 255 );            // blue sky
+  background( 200, 220, 255 );            // blue sky
   noStroke();
   fill( 255, 255, 0 );                    // yellow sun.
   ellipse( xSun, ySun, 30, 30 );
