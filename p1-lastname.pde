@@ -14,7 +14,7 @@ float xZoog, yZoog, dxZoog, dyZoog;
 float xDog, yDog, dxDog, dyDog;
 //
 float xGold, yGold;
-float xSun=50, ySun=50;
+float xSun=50, ySun=50, dxSun=2;
 
 
 //// SETUP ////
@@ -49,11 +49,20 @@ void show() {
 
 //// ACTION:  move the creatures, etc.
 void action() {
+  // Sun moves across sky.  
+  xSun =  xSun + dxSun;
+  // Sunset.
+  if (xSun > width) {
+    xSun=  20;
+    ySun=  random( 20, horizon-20 );
+    dxSun=  random( 0.5, 4 );
+  }
   // ++++ ADD CODE HERE +++
 }
 
-//// MESSAGES:  display titlee, author, messages
+//// MESSAGES:  display title, author, messages
 void credits() {
+  // Title, author.
   fill(0);
   text( title, width/3, 20 );
   text( author, 10, height-10 );
