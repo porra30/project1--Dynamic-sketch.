@@ -33,11 +33,11 @@ void draw() {
 
 //// SCENE:  sky, sun, tree, house. ////
 void scene() {
-  background( 200, 220, 255 );            // blue sky
+  background( 150, 200, 240 );            // blue sky
   noStroke();
-  fill( 255, 255, 0 );                    // yellow sun.
+  fill( 240, 200, 50 );                   // yellowish sun.
   ellipse( xSun, ySun, 30, 30 );
-  fill( 150, 250, 150 );                  // green grass
+  fill( 50, 200, 100 );                   // greenish grass
   rect( 0, horizon, width, height*3/4 );
   // ++++ ADD CODE HERE +++
 }
