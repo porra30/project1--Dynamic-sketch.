@@ -9,11 +9,12 @@ float horizon;
 int score=0;
 
 // Position & speed of creatures, etc.
-float xDarth,yDarth, dxDarth,dyDarth;
-float xZoog,yZoog, dxZoog,dyZoog;
-float xDog,yDog, dxDog,dyDog;
-float xGold,yGold;
-float xSun=50,ySun=50;
+float xDarth, yDarth, dxDarth, dyDarth;
+float xZoog, yZoog, dxZoog, dyZoog;
+float xDog, yDog, dxDog, dyDog;
+//
+float xGold, yGold;
+float xSun=50, ySun=50;
 
 
 //// SETUP ////
@@ -32,11 +33,12 @@ void draw() {
 
 //// SCENE:  sky, sun, tree, house. ////
 void scene() {
-  background( 200,200,255 );    // blue sky
-  fill( 255,255,0 );            // yellow sun.
-  ellipse( xSun,ySun, 30,30 );
-  fill( 150,250,150 );          // green grass
-  rect( 0,horizon, width, height*3/4 );
+  background( 200, 200, 255 );            // blue sky
+  noStroke();
+  fill( 255, 255, 0 );                    // yellow sun.
+  ellipse( xSun, ySun, 30, 30 );
+  fill( 150, 250, 150 );                  // green grass
+  rect( 0, horizon, width, height*3/4 );
   // ++++ ADD CODE HERE +++
 }
 
@@ -55,9 +57,9 @@ void credits() {
   fill(0);
   text( title, width/3, 20 );
   text( author, 10, height-10 );
+  // Display the score (if any).
   if (score>0) {
-    text( score, width*3/4, 40 );    // Score (if any)
+    text( "Score:  "+score, width*3/4, 40 );
   }
   // ++++ ADD CODE HERE +++
 }
-
