@@ -1,7 +1,7 @@
 //// Project 1b - Dynamic sketch.
 ////   Hero chases golden egg, monster chases hero.
 
-String title="Project #1 -- Zoog chases the gold, while Darth chases Zoog";
+String title="Project #1 -- Hero chases the gold, while Monster chases Hero";
 String author="Bruce Alan Martin; 2016/2/29";
 
 //// GLOBAL DECLARATIONS ////
@@ -9,8 +9,8 @@ float horizon;
 int score=0;
 
 // Position & speed of creatures, etc.
-float xDarth, yDarth, dxDarth, dyDarth;
-float xZoog, yZoog, dxZoog, dyZoog;
+float xMonster, yMonster, dxMonster, dyMonster;
+float xHero, yHero, dxHero, dyHero;
 float xDog, yDog, dxDog, dyDog;
 //
 float xGold=0, yGold=0;
@@ -85,6 +85,11 @@ void mouseClicked() {
   if (mouseY>horizon) {
       xGold=  mouseX;
       yGold=  mouseY;
+  }
+}
+void keyPressed() {
+  if (key == 'q') {
+    exit();
   }
 }
 
