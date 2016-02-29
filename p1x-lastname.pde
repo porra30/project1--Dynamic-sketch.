@@ -72,7 +72,8 @@ void action() {
     ySun=  random( 20, horizon-20 );
     dxSun=  random( 0.5, 4 );
   }
-  // ++++ ADD CODE HERE +++
+  // 
+  
   mickey.move();
   darth.move();
 }
