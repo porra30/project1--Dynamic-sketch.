@@ -57,6 +57,7 @@ void scene() {
 //// SHOW:  display the creatures, etc.
 void show() {
   // ++++ ADD CODE HERE +++
+  nugget.show();
   mickey.show();
   darth.show();
 }
