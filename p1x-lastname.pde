@@ -5,7 +5,7 @@ String author="Bruce Alan Martin; 2016/2/29";
 
 //// GLOBAL DECLARATIONS ////
 float horizon;
-int score=0;
+int score=0, total=0, game=1;
 
 Gold nugget;
 Hero mickey;
@@ -109,12 +109,16 @@ void credits() {
     text( "Score:  "+score, width*2/3, 50 );
   }
   textSize(12);
+  if (game>1) {
+    float grandTotal=  total = score;
+    text( "Game "+ game +"  Total=" +grandTotal, width*2/3, 65 );
+  }
   fill(0);
-  text( " +100 for gold.  -150 if caught!", width*2/3, 70 );
-  text( " -10 per day.  -25 to reset.", width*2/3, 90 );
+  text( " +100 for gold.  -150 if caught!", width*2/3, 90 );
+  text( " -10 per day.  -25 to reset.", width*2/3, 105 );
   //
   text( author, 10, height-10 );
-  text( "q to quit; r to reset; s to start over.", width/2, height-10 );
+  text( "q to quit; r to reset; g for new game.", width/2, height-10 );
 }
 
 //// EVENT HANDLERS ////
@@ -127,7 +131,9 @@ void keyPressed() {
     score -= 25;
     // It costs you 25 points to reset & move the gold!
   }
-  if (key == 's') { 
+  if (key == 'g') { 
+    game++;
+    total += score;
     score=0;
     reset();
   }
@@ -181,8 +187,8 @@ class Hero
     if (y>height || y<horizon) { 
       dy= -dy;
     }
-    x=  x + dx;
-    y=  y + dy;
+    x += dx;
+    y += dy;
   }
 }
 
@@ -219,7 +225,7 @@ class Monster
     if (y>height || y<horizon) { 
       dy= -dy;
     }
-    x=  x + dx;
-    y=  y + dy;
+    x += dx;
+    y += dy;
   }
 }
