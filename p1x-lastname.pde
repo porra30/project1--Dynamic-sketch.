@@ -27,10 +27,11 @@ void setup() {
   reset();
 }
 void reset() {
-  nugget.x=0;
-  nugget.y=0;
   mickey.reset();
   darth.reset();
+  // Place gold at random position.
+  nugget.x=  random( 100, width-100 );
+  nugget.y=  random( horizon+20, height-20 );
 }
 
 //// NEXT FRAME:  scene, show, action, messages ////
@@ -57,6 +58,8 @@ void scene() {
     xSun=  20;
     ySun=  random( 20, horizon-20 );
     dxSun=  random( 0.5, 4 );
+    score -= 25;
+    // Lose 25 points per day!
   }
 }
 
@@ -71,14 +74,14 @@ void show() {
 //// ACTION:  move the creatures, etc.
 void action() {
   // Check for collisions.
-  if ( dist( mickey.x,mickey.y, nugget.x,nugget.y )  < 50 ) {
+  if ( dist( mickey.x, mickey.y, nugget.x, nugget.y )  < 50 ) {
     //// Hero got the gold!
     score=  score + 100;
     reset();
   }
-  if ( dist( darth.x,darth.y, mickey.x,mickey.y )  < 50 ) {
+  if ( dist( darth.x, darth.y, mickey.x, mickey.y )  < 50 ) {
     //// Monster catches hero.  :-(
-    score=  score - 100;
+    score=  score - 100;              // Lose 100 points!
     reset();
   }
   // Change speeds, to chase.
@@ -98,26 +101,32 @@ void action() {
 //// MESSAGES:  display title, author, messages
 void credits() {
   // Title, author.
-  fill(0);
+  fill(255, 0, 0);
+  textSize(20);
   text( title, width/3, 20 );
-  text( author, 10, height-10 );
   // Display the score (if any).
-  if (score>0) {
-    text( "Score:  "+score, width*3/4, 40 );
+  if (score != 0) {
+    text( "Score:  "+score, width*2/3, 50 );
   }
-  // ++++ ADD CODE HERE +++
+  textSize(12);
+  fill(0);
+  text( " +100 for gold.  -150 if caught!", width*2/3, 70 );
+  text( " -10 per day.  -25 to reset.", width*2/3, 90 );
+  //
+  text( author, 10, height-10 );
+  text( "r to reset; q to quit.", width/2, height-10 );
 }
 
 //// EVENT HANDLERS ////
-void mouseClicked() {
-  if (mouseY>horizon) {
-    nugget.x=  mouseX;
-    nugget.y=  mouseY;
-  }
-}
 void keyPressed() {
-  if (key == 'q') { exit(); }
-  if (key == 'r') { reset(); }
+  if (key == 'q') { 
+    exit();
+  }
+  if (key == 'r') { 
+    reset();
+    score -= 25;
+    // It costs you 25 points to reset & move the gold!
+  }
 }
 
 //// OBJECTS:  Gold, Hero, Monster. ////
@@ -139,7 +148,7 @@ class Gold {
 class Hero
 {
   // PROPERTIES //
-  float x,y, dx,dy;          // Coordinates & speed.
+  float x, y, dx, dy;          // Coordinates & speed.
   float w=50, h=80;          // Dimensions of hero (small).
   float hHead= w * 2/3;      // Head height.
   float r=200, g=50, b=50;   // Color of hero
@@ -162,8 +171,12 @@ class Hero
   }
   //// Move the hero; bounce off walls.
   void move() {
-    if (x>width || x<0) { dx= -dx;  }
-    if (y>height || y<horizon) { dy= -dy; }
+    if (x>width || x<0) { 
+      dx= -dx;
+    }
+    if (y>height || y<horizon) { 
+      dy= -dy;
+    }
     x=  x + dx;
     y=  y + dy;
   }
@@ -172,7 +185,7 @@ class Hero
 class Monster
 {
   // PROPERTIES //
-  float x,y, dx,dy;          // Coordinates & speed.
+  float x, y, dx, dy;          // Coordinates & speed.
   float w=90, h=150;         // Dimensions of mosnter (big).
   float hHead= w * 2/3;      // Head height.
   float r=20, g=100, b=50;   // Color of monster (dark);
@@ -196,11 +209,13 @@ class Monster
   }
   //// Move & bounce off walls.
   void move() {
-    if (x>width || x<0) { dx= -dx;  }
-    if (y>height || y<horizon) { dy= -dy; }
+    if (x>width || x<0) { 
+      dx= -dx;
+    }
+    if (y>height || y<horizon) { 
+      dy= -dy;
+    }
     x=  x + dx;
     y=  y + dy;
   }
 }
-
-
