@@ -114,7 +114,7 @@ void credits() {
   text( " -10 per day.  -25 to reset.", width*2/3, 90 );
   //
   text( author, 10, height-10 );
-  text( "r to reset; q to quit.", width/2, height-10 );
+  text( "q to quit; r to reset; s to start over.", width/2, height-10 );
 }
 
 //// EVENT HANDLERS ////
@@ -126,6 +126,10 @@ void keyPressed() {
     reset();
     score -= 25;
     // It costs you 25 points to reset & move the gold!
+  }
+  if (key == 's') { 
+    score=0;
+    reset();
   }
 }
 
