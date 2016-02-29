@@ -92,8 +92,8 @@ void credits() {
 //// EVENT HANDLERS ////
 void mouseClicked() {
   if (mouseY>horizon) {
-      nugget.x=  mouseX;
-      nugget.y=  mouseY;
+    nugget.x=  mouseX;
+    nugget.y=  mouseY;
   }
 }
 void keyPressed() {
@@ -107,23 +107,35 @@ void keyPressed() {
 class Creature
 {
   // PROPERTIES //
-  float x=100,y=100, dx=3,dy=2;
+  float x=100, y=100, dx=3, dy=2;
   float w=400, h=60;
   float r=255, g=0, b=0;
   // METHODS //
   void move() {
-    if (x>width || x<0) { dx= -dx; }
-    if (y>height || y<horizon) { dy= -dy; }
+    if (x>width || x<0) { 
+      dx= -dx;
+    }
+    if (y>height || y<horizon) { 
+      dy= -dy;
+    }
     x=  x + dx;
     y=  y + dy;
   }
   void show() {
-    fill( r,g,b );
-    rect( x,y, w,h );
+    fill( r, g, b );
+    rect( x, y, w, h );
     ellipse( x+w/2, y-w/2, w/2, w/2 );
   }
 }
 
 class Gold {
-  float x=0,y=0;
+  float x=0, y=0;
+  void show() {
+    // Gold.
+    if (y > horizon) { 
+      fill( random(240, 250), random(150, 180), random(0, 100) );
+      stroke( random(250), random(150), 0 );
+      ellipse( x, y, 50+random(-3, +3), 30+random(-1, +1) );
+    }
+  }
 }
