@@ -8,10 +8,10 @@ float horizon;
 int score=0;
 
 Creature darth, mickey, rex;
+Gold nugget=  new Gold();
 
 // Position & speed of creatures, etc.
 //
-float xGold, yGold;
 float xSun=50, ySun=50, dxSun=2;
 
 
@@ -89,6 +89,20 @@ void credits() {
   // ++++ ADD CODE HERE +++
 }
 
+//// EVENT HANDLERS ////
+void mouseClicked() {
+  if (mouseY>horizon) {
+      nugget.x=  mouseX;
+      nugget.y=  mouseY;
+  }
+}
+void keyPressed() {
+  if (key == 'q') {
+    exit();
+  }
+}
+
+
 
 class Creature
 {
@@ -108,4 +122,8 @@ class Creature
     rect( x,y, w,h );
     ellipse( x+w/2, y-w/2, w/2, w/2 );
   }
+}
+
+class Gold {
+  float x=0,y=0;
 }
